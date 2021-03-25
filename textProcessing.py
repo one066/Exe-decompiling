@@ -27,9 +27,7 @@ class text_processing:
         struct = self.hexadecimal_read_file('struct')
         norm = self.hexadecimal_read_file(filename)
 
-        for i in range(len(norm)):
-            if struct[i] == 'e3':
-                break
+        for i in range(16):
             norm.insert(i, struct[i])
 
         return norm
