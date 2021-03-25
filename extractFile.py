@@ -48,7 +48,6 @@ class extract_object_file:
         name = self.get_exe_name()
         self.run_pyinstxtractor(name)
         text_processing().restore_file(name.split(".")[0])
-        print(name)
         os.system(f'uncompyle6  {name.split(".")[0] + ".pyc"}')
         os.system(f'uncompyle6  {name.split(".")[0] + ".pyc"} > {name.split(".")[0] + ".py"}')
 
