@@ -6,6 +6,7 @@
 > 然后使用 `uncompyle `做的将.pyc转到.py
 
 ## 使用
+- `pip install uncompyle`
 - 只需将exe放到当前目录，运行`extractFile.py`,即可得到python文件
 - 中间过程生成的文件全部会自动删除
 
