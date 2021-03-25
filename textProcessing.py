@@ -43,6 +43,3 @@ class text_processing:
                 ascii_byte = binascii.a2b_hex(byte)
                 f.write(ascii_byte)
             f.close()
-
-if __name__ == '__main__':
-    text_processing().restore_file('zhishu_0715')
