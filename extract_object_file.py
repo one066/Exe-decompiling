@@ -6,7 +6,7 @@ from update_pyc_head import UpdatePycHead
 
 class ExtractObjectFile:
     def __init__(self):
-        self.path = f'{os.getcwd()}\\bucket'
+        self.path = os.path.join(os.getcwd(), 'bucket')
         self.exe_name = None
 
     def get_exe_name(self):
@@ -25,15 +25,15 @@ class ExtractObjectFile:
     def remove_file(self):
         """remove redundant file
         """
-        file_path = f'{self.path}\\{self.exe_name}.exe_extracted'
+        file_path = os.path.join(self.path, f'{self.exe_name}.exe_extracted')
         for root, dirs, files in os.walk(file_path):
             for f in files:
                 os.remove(os.path.join(root, f))
 
         shutil.rmtree(file_path)
 
-        os.remove(f'{self.path}\\struct')
-        os.remove(f'{self.path}\\{self.exe_name}')
+        os.remove(os.path.join(self.path, 'struct'))
+        os.remove(os.path.join(self.path, self.exe_name))
         return
 
     def get_target_file(self):
@@ -41,11 +41,11 @@ class ExtractObjectFile:
         Run pyinstxtractor.py to get the .pyc file
         Get two target files
         """
-        os.system(f'python pyinstxtractor.py {self.exe_name}.exe')
+        os.system(f'python ../packages/pyinstxtractor.py {self.exe_name}.exe')
 
         # move two target file to main path
-        struct_path = f'{self.path}\\{self.exe_name}.exe_extracted\\struct'
-        target_path = f'{self.path}\\{self.exe_name}.exe_extracted\\{self.exe_name}'
+        struct_path = os.path.join(self.path, f'{self.exe_name}.exe_extracted', 'struct')
+        target_path = os.path.join(self.path, f'{self.exe_name}.exe_extracted', self.exe_name)
         shutil.move(struct_path, self.path)
         shutil.move(target_path, self.path)
 
